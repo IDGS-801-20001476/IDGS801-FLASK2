@@ -1,0 +1,23 @@
+{%extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    {% from "_macros.html" import render_field, render_input %}
+        <form action="/CajasDinamicas" method="POST">
+            {{render_field(form.ncontent)}}
+            <input type="submit" name="btn" value="Enviar">
+        </form>
+        {% if form.ncontent.data %}
+        <form action="/CajasDinamicas" method="POST">
+                {% for i in range(0, form.ncontent.data) %}
+                {{render_input(name="numeros") }}
+                {% endfor %}
+                <input type="submit" name="btn" value="Resultados">
+        </form>
+        {% endif %}
+</div>
+
+
+
+{% endblock %}
