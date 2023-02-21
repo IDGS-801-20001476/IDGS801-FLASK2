@@ -19,7 +19,7 @@ def alumnos():
     reg_alum=forms.UserForm(request.form)
     mat=' '
     nom=' '
-    if request.method == 'POST':
+    if request.method == 'POST' and reg_alum.validate():
         mat=reg_alum.matricula.data
         nom=reg_alum.nombre.data
     return render_template ('Alumnos.html', form=reg_alum,mat=mat,nom=nom)
